@@ -2,7 +2,7 @@ package ss2_vong_lap_trong_java.thuc_hanh.prime_check;
 
 import java.util.Scanner;
 
-public class Main {
+public class PrimeCheck {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a Number: ");

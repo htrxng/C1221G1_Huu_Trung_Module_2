@@ -2,7 +2,7 @@ package ss2_vong_lap_trong_java.thuc_hanh.greate_common_factor;
 
 import java.util.Scanner;
 
-public class Main {
+public class GreateCommonFactor {
     public static void main(String[] args) {
         int a;
         int b;

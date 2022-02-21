@@ -2,7 +2,7 @@ package ss1_introduction_to_java.thuc_hanh.bmi_calculator;
 
 import java.util.Scanner;
 
-public class Main {
+public class BmiCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double weight, height, bmi;

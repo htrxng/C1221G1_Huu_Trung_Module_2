@@ -2,7 +2,7 @@ package ss2_vong_lap_trong_java.thuc_hanh.drawing_menu;
 
 import java.util.Scanner;
 
-public class Main {
+public class DrawingMenu {
     public static void main(String[] args) {
         int choice = -1;
         Scanner input = new Scanner(System.in);

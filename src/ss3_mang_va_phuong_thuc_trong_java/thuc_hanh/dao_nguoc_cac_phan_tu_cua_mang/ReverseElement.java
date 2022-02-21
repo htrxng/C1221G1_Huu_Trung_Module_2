@@ -2,7 +2,7 @@ package ss3_mang_va_phuong_thuc_trong_java.thuc_hanh.dao_nguoc_cac_phan_tu_cua_m
 
 import java.util.Scanner;
 
-public class Main {
+public class ReverseElement {
     public static void main(String[] args) {
         int size;
         int[] array;

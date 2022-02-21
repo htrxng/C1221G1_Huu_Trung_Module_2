@@ -2,7 +2,7 @@ package ss1_introduction_to_java.thuc_hanh.leap_year_calculator;
 
 import java.util.Scanner;
 
-public class Main {
+public class LeapYearCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int year;

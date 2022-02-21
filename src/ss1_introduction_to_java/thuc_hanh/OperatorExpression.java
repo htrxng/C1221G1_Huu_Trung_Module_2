@@ -1,6 +1,6 @@
 package ss1_introduction_to_java.thuc_hanh;
 
-public class Main {
+public class OperatorExpression {
     public static void main(String[] args) {
         int i = 10;
         float f = 20.5f;

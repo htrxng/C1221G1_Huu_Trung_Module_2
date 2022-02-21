@@ -2,7 +2,7 @@ package ss2_vong_lap_trong_java.bai_tap.display_20_firstprime;
 
 import java.util.Scanner;
 
-public class Main {
+public class DisPlay20FirstPrime {
     public static void main(String[] args) {
         int num = 20;
         int count = 0;

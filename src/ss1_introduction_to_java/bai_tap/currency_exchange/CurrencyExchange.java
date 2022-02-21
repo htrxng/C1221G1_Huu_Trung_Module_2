@@ -2,7 +2,7 @@ package ss1_introduction_to_java.thuc_hanh.currency_exchange;
 
 import java.util.Scanner;
 
-public class Main {
+public class CurrencyExchange {
     public static void main(String[] args) {
         double vnd = 23000;
         double usd;
