@@ -1,6 +1,6 @@
 package ss7_interface_and_abstract_class.bai_tap.develop_interface_resizeable_for_geometry_class;
 
-public class Rectangle implements Resizeable {
+public class Rectangle extends Shape implements Resizeable {
     private double height;
     private double width;
     private double areaRectangle;

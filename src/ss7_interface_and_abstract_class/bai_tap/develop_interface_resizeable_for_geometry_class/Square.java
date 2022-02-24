@@ -1,6 +1,6 @@
 package ss7_interface_and_abstract_class.bai_tap.develop_interface_resizeable_for_geometry_class;
 
-public class Square implements Resizeable {
+public class Square extends Shape implements Resizeable {
     private double edge;
     private double areaSquare;
 
