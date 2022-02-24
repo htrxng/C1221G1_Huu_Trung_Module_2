@@ -1,4 +1,4 @@
-package ss6_inheritance.bai_tap.point_2D_point_3D_class;
+package ss6_inheritance.bai_tap.point_2d_point_3d_class;
 
 public class TestPoint2D3D {
     public static void main(String[] args) {

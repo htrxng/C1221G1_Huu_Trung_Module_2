@@ -1,6 +1,4 @@
-package ss6_inheritance.bai_tap.point_2D_point_3D_class;
-
-import java.util.Arrays;
+package ss6_inheritance.bai_tap.point_2d_point_3d_class;
 
 public class Point2D {
     private float x = 0.0f;
