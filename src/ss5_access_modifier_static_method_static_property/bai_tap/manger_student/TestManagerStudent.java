@@ -38,7 +38,9 @@ public class TestManagerStudent {
                     break;
                 case 3:
                     // edit
-
+                    System.out.println("enter id need edit: ");
+                    int id = Integer.parseInt(scanner.nextLine());
+                    studentManager.edit(id);
                     break;
                 case 6:
                     flag = false;
