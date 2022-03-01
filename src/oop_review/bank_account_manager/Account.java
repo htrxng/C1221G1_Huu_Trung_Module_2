@@ -6,7 +6,6 @@ public class Account {
     private long accountNumber;
     private String nameOfOwner;
     private double surplus;
-
     public Account() {
     }
 

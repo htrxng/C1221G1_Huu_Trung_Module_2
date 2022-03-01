@@ -1,5 +1,7 @@
 package ss5_access_modifier_static_method_static_property.bai_tap.manger_student;
 
+import ss10_dsa_danh_sach.bai_tap.array_list.Student;
+
 import java.util.Scanner;
 
 public class StudentManager {
