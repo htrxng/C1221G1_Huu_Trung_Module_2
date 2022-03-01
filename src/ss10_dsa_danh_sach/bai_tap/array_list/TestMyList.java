@@ -9,10 +9,15 @@ public class TestMyList {
         MyList<Student> studentMyList = new MyList<>();
         studentMyList.add(trung);
         studentMyList.add(trung);
+        studentMyList.clear();
         studentMyList.add(Khoa);
         studentMyList.add(toan);
 
         System.out.println(studentMyList.indexOf(trung));
-        System.out.println(studentMyList.get(3));
+        studentMyList.remove(1);
+        studentMyList.add(null,1);
+        studentMyList.ensureCapacity(5);
+        System.out.println(studentMyList.get(1));
+        System.out.println(studentMyList.size());
     }
 }

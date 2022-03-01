@@ -1,12 +1,12 @@
 package oop_review.vehicle_manager;
 
-public  abstract class Vehicle {
-   private String licensePlate;
-   private String manufacturer;
-   private int manufacturerYear;
-   private String owner;
+public abstract class Vehicle {
+    private String licensePlate;
+    private Manufacturer manufacturer;
+    private int manufacturerYear;
+    private String owner;
 
-    public Vehicle(String licensePlate, String manufacturer, int manufacturerYear, String owner) {
+    public Vehicle(String licensePlate, Manufacturer manufacturer, int manufacturerYear, String owner) {
         this.licensePlate = licensePlate;
         this.manufacturer = manufacturer;
         this.manufacturerYear = manufacturerYear;
@@ -24,11 +24,11 @@ public  abstract class Vehicle {
         this.licensePlate = licensePlate;
     }
 
-    public String getManufacturer() {
+    public Manufacturer getManufacturer() {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public void setManufacturer(Manufacturer manufacturer) {
         this.manufacturer = manufacturer;
     }
 
@@ -52,9 +52,9 @@ public  abstract class Vehicle {
     public String toString() {
         return
                 "licensePlate='" + licensePlate + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", manufacturerYear=" + manufacturerYear +
-                ", owner='" + owner + '\'' +
-                '}';
+                        ", manufacturer='" + manufacturer + '\'' +
+                        ", manufacturerYear=" + manufacturerYear +
+                        ", owner='" + owner + '\'' +
+                        '}';
     }
 }

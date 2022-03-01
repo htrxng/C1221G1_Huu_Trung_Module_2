@@ -6,7 +6,7 @@ public class Bike extends Vehicle {
     public Bike() {
     }
 
-    public Bike(String licensePlate, String manufacturer, int manufacturerYear, String owner, double wattage) {
+    public Bike(String licensePlate, Manufacturer manufacturer, int manufacturerYear, String owner, double wattage) {
         super(licensePlate, manufacturer, manufacturerYear, owner);
         this.wattage = wattage;
     }

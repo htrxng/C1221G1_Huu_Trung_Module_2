@@ -37,7 +37,7 @@ public class MyList<E> {
         }
     }
     public void remove(int index){
-        elements[index] = null;
+         elements[index] = null;
         for (int i = index+1; i <= size ; i++) {
             elements[i-1] = elements[i];
         }

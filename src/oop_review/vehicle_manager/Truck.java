@@ -1,12 +1,12 @@
 package oop_review.vehicle_manager;
 
-public class Truck extends Vehicle{
+public class Truck extends Vehicle {
     Double tonnage;
 
     public Truck() {
     }
 
-    public Truck(String licensePlate, String manufacturer, int manufacturerYear, String owner, Double tonnage) {
+    public Truck(String licensePlate, Manufacturer manufacturer, int manufacturerYear, String owner, Double tonnage) {
         super(licensePlate, manufacturer, manufacturerYear, owner);
         this.tonnage = tonnage;
     }
