@@ -1,8 +1,8 @@
 package oop_review.vehicle_manager;
 
 public class Car extends Vehicle {
-    String type;
-    int seats;
+    private String type;
+    private int seats;
 
     public Car() {
     }

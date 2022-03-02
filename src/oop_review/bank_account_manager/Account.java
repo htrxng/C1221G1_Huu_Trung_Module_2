@@ -1,11 +1,12 @@
 package oop_review.bank_account_manager;
 
 public class Account {
-    public final float interest = 0.035f;
-    public final float transactionFee = 1f;
+    public final float INTEREST = 0.035f;
+    public final float TRANSACTIONFEE = 1f;
     private long accountNumber;
     private String nameOfOwner;
     private double surplus;
+
     public Account() {
     }
 
@@ -45,8 +46,8 @@ public class Account {
     }
 
     public void withdrawMoney(double amountOfMoneyWithdraw) {
-        if ((amountOfMoneyWithdraw + transactionFee) < this.surplus) {
-            this.surplus -= (amountOfMoneyWithdraw + transactionFee);
+        if ((amountOfMoneyWithdraw + TRANSACTIONFEE) < this.surplus) {
+            this.surplus -= (amountOfMoneyWithdraw + TRANSACTIONFEE);
             System.out.println("Withdraw money successfully!");
         } else {
             System.out.println("surplus not enough.");
@@ -54,12 +55,12 @@ public class Account {
     }
 
     public void expire() {
-        this.surplus = this.surplus + this.surplus * interest;
+        this.surplus = this.surplus + this.surplus * INTEREST;
     }
 
     public void transfers(double amountOfMoneyTransfers, Account account, String message) {
-        if ((amountOfMoneyTransfers + transactionFee) < this.surplus) {
-            this.surplus -= (amountOfMoneyTransfers + transactionFee);
+        if ((amountOfMoneyTransfers + TRANSACTIONFEE) < this.surplus) {
+            this.surplus -= (amountOfMoneyTransfers + TRANSACTIONFEE);
             account.surplus += amountOfMoneyTransfers;
             System.out.println("transfer successfully with message to " +account.nameOfOwner+ " : "+ '"' + message+ '"' );
         } else {

@@ -3,7 +3,7 @@ package oop_review.vehicle_manager;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CarMangager {
+public class CarMangager  {
     static ArrayList<Car> carArrayList = new ArrayList<Car>(10);
     Scanner scanner = new Scanner(System.in);
 
@@ -33,8 +33,7 @@ public class CarMangager {
     }
 
     public void deleteCar(String licensePlate) {
-        for (Car c : carArrayList
-        ) {
+        for (Car c : carArrayList        ) {
             if (c.getLicensePlate().equals(licensePlate)) {
                 System.out.println(c);
                 System.out.println("Do you want delete this vehicle? \n +" +
@@ -49,7 +48,9 @@ public class CarMangager {
                     case 2:
                         break;
                 }
+                break;
             }
         }
+        displayCarList();
     }
 }

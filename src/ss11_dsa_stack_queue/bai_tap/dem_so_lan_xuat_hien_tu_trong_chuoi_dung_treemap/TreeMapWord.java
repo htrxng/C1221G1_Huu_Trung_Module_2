@@ -7,7 +7,7 @@ public class TreeMapWord {
     public static void main(String[] args) {
         String wordString = new String("You say yes , i say no , you say stop and i say go go go , oh no");
         wordString = wordString.toLowerCase();
-        String[] wordArray = wordString.split(" ");
+        String[] wordArray = wordString.split("");
 
         TreeMap<String, Integer> treeMapWord = new TreeMap<String, Integer>();
 
@@ -22,7 +22,7 @@ public class TreeMapWord {
         }
         for (Map.Entry m: treeMapWord.entrySet()
              ) {
-            System.out.println(m.getKey() + " " + m.getValue());
+            System.out.println(m.getKey()+" "+ m.getValue());
         }
     }
 }
