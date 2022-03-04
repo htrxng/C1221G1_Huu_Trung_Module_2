@@ -15,11 +15,11 @@ public class ProductManageImple {
                     "4.Display Product\n" +
                     "5.Search Product \n" +
                     "6.Arrange by price small to big \n " +
-                    "6.Arrange by price big to small \n " +
+                    "7.Arrange by price big to small \n " +
                     "0.exit \n ");
             System.out.println("choose function");
             int choose = Integer.parseInt(scanner.nextLine());
-            switch (choose) {
+            switch (choose)  {
                 case 1:
                     // add
                     productManager.addnewProduct();

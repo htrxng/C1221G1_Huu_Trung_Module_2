@@ -79,12 +79,11 @@ public class ProductManager {
     }
 
     public void searchProduct() {
-        System.out.println("Enter product's name ");
+        System.out.print("Enter product's name:");
         String productName = scanner.nextLine();
-        boolean flag = false;
         for (Product p : productArrayList
         ) {
-          if(p.getProductName().equals(productName)) {
+          if(p.getProductName().contains(productName)) {
               System.out.println(p);
           }
         }System.out.println("not exist!");
