@@ -18,7 +18,6 @@ public class InsertionSort {
 
     public static void main(String[] args) {
         insertionSort(list);
-        for (int i = 0; i < list.length; i++)
-            System.out.print(list[i] + " ");
+        for (int value : list) System.out.print(value + " ");
     }
 }
