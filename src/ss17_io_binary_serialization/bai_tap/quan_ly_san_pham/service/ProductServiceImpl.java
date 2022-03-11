@@ -11,10 +11,11 @@ public class ProductServiceImpl implements IService {
     List<Product> productList = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
     List<Product> productArrayListSearched = new ArrayList<>();
+    final static String PRODUCT_SOURCE_FILE =  "src\\ss17_io_binary_serialization\\bai_tap\\quan_ly_san_pham\\data\\productList.dat";
     public void search() {
         System.out.print("enter name product : ");
         String nameProduct = scanner.nextLine();
-        List<Product> productDataFromFile1 = ReadAndWrite.read("ss17_io_binary_serialization\\bai_tap\\quan_ly_san_pham\\data\\productList.dat");
+        List<Product> productDataFromFile1 = ReadAndWrite.read(PRODUCT_SOURCE_FILE);
         for (Product product : productDataFromFile1) {
             if(product.getProductName().contains(nameProduct)) {
                 productArrayListSearched.add(product);
@@ -39,7 +40,7 @@ public class ProductServiceImpl implements IService {
         String description = scanner.nextLine();
         Product newProduct = new Product(idProduct,productName,manufacturer,price,description);
         productList.add(newProduct);
-        ReadAndWrite.writeToFile("ss17_io_binary_serialization\\bai_tap\\quan_ly_san_pham\\data\\productList.dat", productList);
+        ReadAndWrite.writeToFile(PRODUCT_SOURCE_FILE, productList);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class ProductServiceImpl implements IService {
 
     @Override
     public void display() {
-        List<Product> productDataFromFile = ReadAndWrite.read("ss17_io_binary_serialization\\bai_tap\\quan_ly_san_pham\\data\\productList.dat");
+        List<Product> productDataFromFile = ReadAndWrite.read(PRODUCT_SOURCE_FILE);
         for (Product product : productDataFromFile) {
             System.out.println(product);
         }
