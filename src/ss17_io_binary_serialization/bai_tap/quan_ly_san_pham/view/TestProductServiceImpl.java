@@ -5,6 +5,6 @@ import ss17_io_binary_serialization.bai_tap.quan_ly_san_pham.controller.Controll
 public class TestProductServiceImpl {
     public static void main(String[] args) {
         ControllerService controllerService = new ControllerService();
-        controllerService.displayMainMenu();
+        controllerService.controlProductService();
     }
 }
