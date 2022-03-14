@@ -9,19 +9,19 @@ import java.util.Scanner;
 
 public class BikeServiceImpl implements IService {
     static ArrayList<Bike> bikeArrayList = new ArrayList<Bike>(10);
+    ManufacturerServiceImpl manufacturerServiceImpl = new ManufacturerServiceImpl();
     Scanner scanner = new Scanner(System.in);
     @Override
     public void add() {
-        System.out.println("enter licenseplate");
+        System.out.print("enter license plate: ");
         String licensePlate = scanner.nextLine();
-        System.out.println("choose manufaturer:");
-        ManufacturerServiceImpl manufacturerServiceImpl = new ManufacturerServiceImpl();
+        //gọi manufacturer list
         Manufacturer manufacturer = manufacturerServiceImpl.chooseManufacturer();
-        System.out.println("enter manufacturer year");
+        System.out.print("enter manufacturer year: ");
         int manufacturerYear = Integer.parseInt(scanner.nextLine());
-        System.out.println("enter owner name");
+        System.out.print("enter owner name: ");
         String owner = scanner.nextLine();
-        System.out.println("enter wattage");
+        System.out.print("enter wattage: ");
         double wattage = Double.parseDouble(scanner.nextLine());
         Bike newBike = new Bike(licensePlate, manufacturer, manufacturerYear, owner, wattage);
         bikeArrayList.add(newBike);
@@ -39,21 +39,21 @@ public class BikeServiceImpl implements IService {
         ) {
             if (b.getLicensePlate().equals(licensePlate)) {
                 System.out.println(b);
-                System.out.println("Do you want delete this vehicle? \n +" +
+                System.out.print("Do you want delete this vehicle? \n" +
                         "1.Yes \n" +
                         "2.No \n");
                 int choose = Integer.parseInt(scanner.nextLine());
                 switch (choose) {
                     case 1:
                         bikeArrayList.remove(b);
-                        System.out.println("Succesfully Remove Vehicle");
+                        System.err.println("Successfully Remove Vehicle");
                         break;
                     case 2:
+                        System.err.println("Not Delete!");
                         break;
                 }
             }
             break;
         }
     }
-
 }

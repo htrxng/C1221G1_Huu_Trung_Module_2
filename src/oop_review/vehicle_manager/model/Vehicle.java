@@ -54,7 +54,6 @@ public abstract class Vehicle {
                 "licensePlate='" + licensePlate + '\'' +
                         ", manufacturer='" + manufacturer + '\'' +
                         ", manufacturerYear=" + manufacturerYear +
-                        ", owner='" + owner + '\'' +
-                        '}';
+                        ", owner='" + owner + '\'';
     }
 }

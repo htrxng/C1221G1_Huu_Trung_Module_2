@@ -47,7 +47,7 @@ public class CarServiceImpl implements IService {
                 switch (choose) {
                     case 1:
                         carArrayList.remove(c);
-                        System.out.println("Succesfully Remove Vehicle");
+                        System.out.println("Successfully Remove Vehicle");
                         break;
                     case 2:
                         break;

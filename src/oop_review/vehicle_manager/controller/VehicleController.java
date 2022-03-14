@@ -16,11 +16,11 @@ public class VehicleController {
     IService bikeServiceImpl = new BikeServiceImpl();
 
     public void addVehicle() {
-        System.out.println("Vehicle type list: \n" +
+        System.out.print("Vehicle type list: \n" +
                 "1.Car \n" +
                 "2.Truck \n" +
                 "3.Bike \n");
-        System.out.println("choose type of vehicle to add: ");
+        System.out.print("choose type of vehicle to add: ");
         int choose = Integer.parseInt(scanner.nextLine());
         switch (choose) {
             case 1:
@@ -37,6 +37,7 @@ public class VehicleController {
                 break;
             default:
                 //
+                System.out.println("not a choice");
         }
     }
 
@@ -45,7 +46,7 @@ public class VehicleController {
                 "1.Car \n" +
                 "2.Truck \n" +
                 "3.Bike \n");
-        System.out.println("choose type of vehicle which you want to display: ");
+        System.out.print("choose type of vehicle which you want to display: ");
         int choose = Integer.parseInt(scanner.nextLine());
         switch (choose) {
             case 1:
@@ -60,6 +61,8 @@ public class VehicleController {
                 // display bike list
                 bikeServiceImpl.display();
                 break;
+            default:
+                System.out.println("not a choice");
         }
     }
 

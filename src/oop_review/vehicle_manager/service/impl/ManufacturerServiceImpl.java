@@ -28,13 +28,12 @@ public class ManufacturerServiceImpl {
     }
 
     Manufacturer chooseManufacturer() {
-        System.out.println("Manufacturer List: ");
+        System.out.println("------Manufacturer List------ ");
         for (int i = 0; i < manufacturerList.size(); i++) {
             System.out.println((i + 1) + "." + manufacturerList.get(i));
         }
-        System.out.println("choose manufacturer:");
+        System.out.print("choose manufacturer:");
         int choose = Integer.parseInt(scanner.nextLine());
-
         return manufacturerList.get(choose - 1);
     }
 

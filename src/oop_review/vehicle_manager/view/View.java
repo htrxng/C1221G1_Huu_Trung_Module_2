@@ -12,18 +12,20 @@ public class View {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         int chooseFunction;
+        System.out.println("STARTED!");
         do {
-            System.out.println("Vehicle Manage Programmer \n " +
-                    "Choose function \n" +
-                    "1.Add new vehicle \n " +
+            System.out.print("---------------Vehicle Manage Programmer------------ \n" +
+                    "1.Add new vehicle \n" +
                     "2.Display vehicle \n" +
                     "3.Delete vehicle \n" +
-                    "4.Exit");
+                    "0.Exit \n"+
+            "Choose function: ");
             chooseFunction = Integer.parseInt(scanner.nextLine());
             switch (chooseFunction) {
                 case 1:
                     //add function
                     vehicleController.addVehicle();
+                    System.out.println("create success!");
                     break;
                 case 2:
                     //display vehicle
@@ -33,8 +35,9 @@ public class View {
                     //delete vehicle
                     vehicleController.deleteVehicle();
                     break;
-                case 4:
+                case 0:
                     //exit
+                    System.out.println("---------------------------ENDED!-----------------------");
                     flag = false;
                     break;
             }

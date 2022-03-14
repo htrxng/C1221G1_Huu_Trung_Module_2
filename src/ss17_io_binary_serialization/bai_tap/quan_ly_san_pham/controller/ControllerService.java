@@ -22,7 +22,7 @@ public class ControllerService {
             System.out.println("Menu \n" +
                     "1.Add Product \n" +
                     "2.Display Product List \n" +
-                    "3.Search Product Information \n " +
+                    "3.Search Product Information \n" +
                     "4.Update Product \n" +
                     "5.Delete Product \n" +
                     "6.Save Data \n" +
@@ -45,7 +45,6 @@ public class ControllerService {
                     break;
                 case 4:
                     //update function is being developing...
-
                     break;
                 case 5:
                     //delete
