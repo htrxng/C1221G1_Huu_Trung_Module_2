@@ -5,13 +5,13 @@ public abstract class Person {
     private String birthday;
     private String gender;
     private int iDNo;
-    private int phoneNumber;
+    private String phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(String name, String birthday, String gender, int iDNo, int phoneNumber, String email) {
+    public Person(String name, String birthday, String gender, int iDNo, String phoneNumber, String email) {
         this.name = name;
         this.birthday = birthday;
         this.gender = gender;
@@ -52,11 +52,11 @@ public abstract class Person {
         this.iDNo = iDNo;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -66,5 +66,15 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return ", name='" + name + '\'' +
+                ", birthday='" + birthday + '\'' +
+                ", gender='" + gender + '\'' +
+                ", iDNo=" + iDNo +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'';
     }
 }

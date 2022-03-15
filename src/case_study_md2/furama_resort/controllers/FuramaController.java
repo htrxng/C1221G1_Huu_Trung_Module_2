@@ -1,20 +1,26 @@
 package case_study_md2.furama_resort.controllers;
 
+import case_study_md2.furama_resort.services.impl.CustomerServiceImpl;
+import case_study_md2.furama_resort.services.impl.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
     Scanner scanner = new Scanner(System.in);
-
+    public FuramaController() {
+    }
+    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+    CustomerServiceImpl customerService = new CustomerServiceImpl();
     public void displayMainMenu() {
         boolean flag = true;
         do {
             System.out.println("---------Main Menu --------- \n" +
-                    "1. Employee Management " +
-                    "2. Customer Management " +
-                    "3. Facility Management " +
-                    "4. Booking Management " +
-                    "5. Promotion Management " +
-                    "6. Exit ");
+                    "1. Employee Management \n" +
+                    "2. Customer Management \n" +
+                    "3. Facility Management \n" +
+                    "4. Booking Management \n" +
+                    "5. Promotion Management \n" +
+                    "0. Exit");
             System.out.print("Choose function: ");
             int chooseMainFunction = Integer.parseInt(scanner.nextLine());
             switch (chooseMainFunction) {
@@ -23,21 +29,24 @@ public class FuramaController {
                     boolean flag1 = true;
                     do {
 
-                        System.out.println("1.Display list employees \n " +
+                        System.out.println("1.Display list employees \n" +
                                 "2.Add new employee \n" +
                                 "3.Edit employee \n" +
                                 "4.Return main menu ");
-                        System.out.println("Choose function: ");
+                        System.out.print("Choose function: ");
                         int choose = Integer.parseInt(scanner.nextLine());
                         switch (choose) {
                             case 1:
                                 //display list employees
+                                employeeService.display();
                                 break;
                             case 2:
                                 // add new employee
+                                employeeService.add();
                                 break;
                             case 3:
                                 //edit employee
+                                employeeService.edit();
                                 break;
                             case 4:
                                 //return main menu
@@ -53,7 +62,7 @@ public class FuramaController {
                     boolean flag2 = true;
                     do {
 
-                        System.out.println("1.Display list customers \n " +
+                        System.out.println("1.Display list customers \n" +
                                 "2.Add new customers \n" +
                                 "3.Edit customers \n" +
                                 "4.Return main menu ");
@@ -62,12 +71,15 @@ public class FuramaController {
                         switch (choose) {
                             case 1:
                                 //display list customers
+                                customerService.display();
                                 break;
                             case 2:
                                 // add new customers
+                                customerService.add();
                                 break;
                             case 3:
                                 //edit customers
+                                customerService.edit();
                                 break;
                             case 4:
                                 //return main menu
@@ -83,7 +95,7 @@ public class FuramaController {
                     boolean flag3 = true;
                     do {
 
-                        System.out.println("1.Display list facility \n " +
+                        System.out.println("1.Display list facility \n" +
                                 "2.Add new facility \n" +
                                 "3.Edit facility \n" +
                                 "4.Return main menu ");
@@ -170,8 +182,9 @@ public class FuramaController {
                         }
                     } while (flag5);
                     break;
-                case 6:
+                case 0:
                     //exit
+                    System.out.println("---------Ended-----------");
                     flag = false;
                     break;
                 default:

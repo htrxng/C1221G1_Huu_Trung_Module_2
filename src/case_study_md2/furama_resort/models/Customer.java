@@ -1,25 +1,25 @@
 package case_study_md2.furama_resort.models;
 
 public class Customer extends Person {
-    private int customerCode;
+    private String customerCode;
     private String typeOfCustomer;
     private String address;
 
     public Customer() {
     }
 
-    public Customer(String name, String birthday, String gender, int iDNo, int phoneNumber, String email, int customerCode, String typeOfCustomer, String address) {
+    public Customer(String name, String birthday, String gender, int iDNo, String phoneNumber, String email, String customerCode, String typeOfCustomer, String address) {
         super(name, birthday, gender, iDNo, phoneNumber, email);
         this.customerCode = customerCode;
         this.typeOfCustomer = typeOfCustomer;
         this.address = address;
     }
 
-    public int getCustomerCode() {
+    public String getCustomerCode() {
         return customerCode;
     }
 
-    public void setCustomerCode(int customerCode) {
+    public void setCustomerCode(String customerCode) {
         this.customerCode = customerCode;
     }
 
@@ -39,4 +39,13 @@ public class Customer extends Person {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerCode='" + customerCode + '\'' +
+                super.toString()+
+                ", typeOfCustomer='" + typeOfCustomer + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }
