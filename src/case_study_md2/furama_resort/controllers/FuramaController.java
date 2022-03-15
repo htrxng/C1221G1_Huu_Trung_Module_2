@@ -28,8 +28,8 @@ public class FuramaController {
                     // Employee Management
                     boolean flag1 = true;
                     do {
-
-                        System.out.println("1.Display list employees \n" +
+                        System.out.println("----------Menu Employee Management Function-------\n" +
+                                "1.Display list employees \n" +
                                 "2.Add new employee \n" +
                                 "3.Edit employee \n" +
                                 "4.Return main menu ");
@@ -62,11 +62,12 @@ public class FuramaController {
                     boolean flag2 = true;
                     do {
 
-                        System.out.println("1.Display list customers \n" +
+                        System.out.println("-------Menu Customer Management Function-------\n" +
+                                "1.Display list customers \n" +
                                 "2.Add new customers \n" +
                                 "3.Edit customers \n" +
                                 "4.Return main menu ");
-                        System.out.println("Choose function: ");
+                        System.out.print("Choose function: ");
                         int choose = Integer.parseInt(scanner.nextLine());
                         switch (choose) {
                             case 1:
@@ -95,7 +96,8 @@ public class FuramaController {
                     boolean flag3 = true;
                     do {
 
-                        System.out.println("1.Display list facility \n" +
+                        System.out.println("-------Menu Facility Management Function-------\n" +
+                                "1.Display list facility \n" +
                                 "2.Add new facility \n" +
                                 "3.Edit facility \n" +
                                 "4.Return main menu ");
@@ -124,7 +126,8 @@ public class FuramaController {
                     // Booking Management
                     boolean flag4 = true;
                     do{
-                        System.out.println("1.Add new booking \n" +
+                        System.out.println("-------Menu Booking Management Function-------\n" +
+                                "1.Add new booking \n" +
                                 "2.Display list booking \n" +
                                 "3.Create new constracts \n" +
                                 "4.Display contracts list  \n" +
@@ -161,7 +164,8 @@ public class FuramaController {
                     // Promotion Management
                     boolean flag5 = true;
                     do {
-                        System.out.println("1.Display list customers use service \n" +
+                        System.out.println("-------Menu Promotion Management Function-------\n" +
+                                "1.Display list customers use service \n" +
                                 "2.Display list customers get voucher \n" +
                                 "3.Return main menu");
                         System.out.print("choose function: ");
@@ -188,7 +192,7 @@ public class FuramaController {
                     flag = false;
                     break;
                 default:
-                    System.out.println("not a choice!");
+                    System.err.println("not a choice!");
                     break;
             }
         } while (flag);
