@@ -62,9 +62,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void edit() {
         System.out.print("enter customer name: ");
         String name = scanner.nextLine();
-        if (search(name).size() == 0) {
-            System.err.println("this name is not exist!");
-        } else {
+        if (search(name).size() != 0) {
             for (Customer e : search(name)
             ) {
                 System.out.println(e);
@@ -89,9 +87,9 @@ public class CustomerServiceImpl implements CustomerService {
                                 "9.Address \n" +
                                 "0.End update and exit \n" +
                                 "------->: ");
-                        int choice = Integer.parseInt(scanner.nextLine());
+                        String choice = scanner.nextLine();
                         switch (choice) {
-                            case 1:
+                            case "1":
                                 //
                                 System.out.print("enter new Customer's name: ");
                                 String newName = scanner.nextLine();
@@ -99,7 +97,7 @@ public class CustomerServiceImpl implements CustomerService {
                                     e.setName(newName);
                                 }
                                 break;
-                            case 2:
+                            case "2":
                                 //
                                 System.out.print("enter new Birthday: ");
                                 String birthday = scanner.nextLine();
@@ -107,7 +105,7 @@ public class CustomerServiceImpl implements CustomerService {
                                     e.setBirthday(birthday);
                                 }
                                 break;
-                            case 3:
+                            case "3":
                                 //
                                 System.out.print("enter new Gender: ");
                                 String gender = scanner.nextLine();
@@ -115,13 +113,13 @@ public class CustomerServiceImpl implements CustomerService {
                                     e.setGender(gender);
                                 }
                                 break;
-                            case 4:
+                            case "4":
                                 //
                                 System.out.print("enter new Identity Card Number: ");
                                 int iDNo = Integer.parseInt(scanner.nextLine());
                                 e.setiDNo(iDNo);
                                 break;
-                            case 5:
+                            case "5":
                                 //
                                 System.out.print("enter new phone: ");
                                 String phone = scanner.nextLine();
@@ -129,7 +127,7 @@ public class CustomerServiceImpl implements CustomerService {
                                     e.setPhoneNumber(phone);
                                 }
                                 break;
-                            case 6:
+                            case "6":
                                 //
                                 System.out.print("enter new email: ");
                                 String email = scanner.nextLine();
@@ -137,7 +135,7 @@ public class CustomerServiceImpl implements CustomerService {
                                     e.setEmail(email);
                                 }
                                 break;
-                            case 7:
+                            case "7":
                                 //
                                 System.out.print("enter new Customer's Code : ");
                                 String customerCode = scanner.nextLine();
@@ -145,7 +143,7 @@ public class CustomerServiceImpl implements CustomerService {
                                     e.setCustomerCode(customerCode);
                                 }
                                 break;
-                            case 8:
+                            case "8":
                                 //
                                 System.out.println("choose new customerCode Type : ");
                                 String customerType = chooseCustomerType();
@@ -153,19 +151,22 @@ public class CustomerServiceImpl implements CustomerService {
                                     e.setTypeOfCustomer(customerType);
                                 }
                                 break;
-                            case 0:
+                            case "0":
                                 //exit
                                 System.out.println("----------------End update processing---------- ");
                                 flag = false;
                                 break;
                             default:
-                                System.err.println("not a choice!");
+                                System.out.println("not a choice!");
+                                break;
                         }
                     } while (flag);
                     System.out.println(e);
                     break;
                 }
             }
+        } else {
+            System.err.println("this name is not exist!");
         }
     }
 

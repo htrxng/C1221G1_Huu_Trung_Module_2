@@ -2,13 +2,13 @@ package case_study_md2.furama_resort.models;
 
 public class House extends Facility {
     private String roomStandard;
-    private int floorNumber;
+    private String floorNumber;
 
     public House() {
     }
 
-    public House(String nameService, Double usableArea, Double cost, int maximumNumberOfPeople, String rentalForm, String roomStandard, int floorNumber) {
-        super(nameService, usableArea, cost, maximumNumberOfPeople, rentalForm);
+    public House(String serviceCode, String nameService, String usableArea, String cost, String maximumNumberOfPeople, String rentalForm, String roomStandard, String floorNumber) {
+        super(serviceCode,nameService, usableArea, cost, maximumNumberOfPeople, rentalForm);
         this.roomStandard = roomStandard;
         this.floorNumber = floorNumber;
     }
@@ -21,12 +21,20 @@ public class House extends Facility {
         this.roomStandard = roomStandard;
     }
 
-    public int getFloorNumber() {
+    public String getFloorNumber() {
         return floorNumber;
     }
 
-    public void setFloorNumber(int floorNumber) {
+    public void setFloorNumber(String floorNumber) {
         this.floorNumber = floorNumber;
     }
 
+    @Override
+    public String toString() {
+        return "House{" +
+                super.toString() +
+                " roomStandard='" + roomStandard + '\'' +
+                ", floorNumber=" + floorNumber +
+                '}';
+    }
 }

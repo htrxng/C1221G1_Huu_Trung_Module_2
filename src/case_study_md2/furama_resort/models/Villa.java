@@ -2,14 +2,14 @@ package case_study_md2.furama_resort.models;
 
 public class Villa extends Facility {
     private String roomStandard;
-    private Float poolArea;
-    private int floorNumber;
+    private String poolArea;
+    private String floorNumber;
 
     public Villa() {
     }
 
-    public Villa(String nameService, Double usableArea, Double cost, int maximumNumberOfPeople, String rentalForm, String roomStandard, Float poolArea, int floorNumber) {
-        super(nameService, usableArea, cost, maximumNumberOfPeople, rentalForm);
+    public Villa(String serviceCode, String nameService, String usableArea, String cost, String maximumNumberOfPeople, String rentalForm, String roomStandard, String poolArea, String floorNumber) {
+        super(serviceCode, nameService, usableArea, cost, maximumNumberOfPeople, rentalForm);
         this.roomStandard = roomStandard;
         this.poolArea = poolArea;
         this.floorNumber = floorNumber;
@@ -23,19 +23,29 @@ public class Villa extends Facility {
         this.roomStandard = roomStandard;
     }
 
-    public Float getPoolArea() {
+    public String getPoolArea() {
         return poolArea;
     }
 
-    public void setPoolArea(Float poolArea) {
+    public void setPoolArea(String poolArea) {
         this.poolArea = poolArea;
     }
 
-    public int getFloorNumber() {
+    public String getFloorNumber() {
         return floorNumber;
     }
 
-    public void setFloorNumber(int floorNumber) {
+    public void setFloorNumber(String floorNumber) {
         this.floorNumber = floorNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Villa{" +
+                super.toString() +
+                " roomStandard='" + roomStandard + '\'' +
+                ", poolArea='" + poolArea + '\'' +
+                ", floorNumber=" + floorNumber +
+                '}';
     }
 }
