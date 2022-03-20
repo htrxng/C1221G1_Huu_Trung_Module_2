@@ -8,11 +8,14 @@ public class Customer extends Person {
     public Customer() {
     }
 
-    public Customer(String name, String birthday, String gender, int iDNo, String phoneNumber, String email, String customerCode, String typeOfCustomer, String address) {
+    public Customer(String customerCode, String name, String birthday, String gender, int iDNo, String phoneNumber, String email, String typeOfCustomer, String address) {
         super(name, birthday, gender, iDNo, phoneNumber, email);
         this.customerCode = customerCode;
         this.typeOfCustomer = typeOfCustomer;
         this.address = address;
+    }
+
+    public Customer(String customerCode, String name, String birthday, String gender, String s, String phoneNumber, String email, String typeOfCustomer, String address) {
     }
 
     public String getCustomerCode() {
@@ -39,13 +42,37 @@ public class Customer extends Person {
         this.address = address;
     }
 
+    //public Customer(String customerCode, String name, String birthday, String gender, int iDNo, String phoneNumber, String email,  String typeOfCustomer, String address) {
+//    @Override
+//    public String toString() {
+//        return getCustomerCode() + "," +
+//                getName() + "," +
+//                getBirthday() + "," +
+//                getGender() + "," +
+//                getiDNo() + "," +
+//                getPhoneNumber() + "," +
+//                getEmail() + "," +
+//                getTypeOfCustomer() + "," +
+//                getAddress();
+//    }
+
+
     @Override
     public String toString() {
         return "Customer{" +
                 "customerCode='" + customerCode + '\'' +
-                super.toString()+
+                super.toString() +
                 ", typeOfCustomer='" + typeOfCustomer + '\'' +
                 ", address='" + address + '\'' +
                 '}';
     }
+
+    @Override
+    public String getInformationToCSV() {
+        return customerCode
+                + "," + super.getInformationToCSV()
+                + "," + typeOfCustomer
+                + "," + address;
+    }
+
 }

@@ -77,4 +77,8 @@ public abstract class Person {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'';
     }
+
+    public String getInformationToCSV() {
+        return name + "," + birthday + "," + gender + "," + iDNo + "," + phoneNumber + "," + email;
+    }
 }

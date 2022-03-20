@@ -34,7 +34,7 @@ public class FuramaController {
                                 "1.Display list employees \n" +
                                 "2.Add new employee \n" +
                                 "3.Edit employee \n" +
-                                "4.Return main menu ");
+                                "4.Save data and return main menu ");
                         System.out.print("Choose function: ");
                         String choose = scanner.nextLine();
                         switch (choose) {
@@ -52,6 +52,7 @@ public class FuramaController {
                                 break;
                             case "4":
                                 //return main menu
+                                employeeService.saveToFile();
                                 flag1 = false;
                                 break;
                             default:
@@ -68,7 +69,7 @@ public class FuramaController {
                                 "1.Display list customers \n" +
                                 "2.Add new customers \n" +
                                 "3.Edit customers \n" +
-                                "4.Return main menu ");
+                                "4.Save data and return main menu ");
                         System.out.print("Choose function: ");
                         String choose = scanner.nextLine();
                         switch (choose) {
@@ -86,6 +87,7 @@ public class FuramaController {
                                 break;
                             case "4":
                                 //return main menu
+                                customerService.saveToFile();
                                 flag2 = false;
                                 break;
                             default:
@@ -97,7 +99,6 @@ public class FuramaController {
                     // Facility Management
                     boolean flag3 = true;
                     do {
-
                         System.out.println("-------Menu Facility Management Function-------\n" +
                                 "1.Display list facility \n" +
                                 "2.Add new facility \n" +
@@ -109,6 +110,7 @@ public class FuramaController {
                             case "1":
                                 //display list facility
                                 facilityService.displayListFacility();
+                                System.out.println();
                                 break;
                             case "2":
                                 // add new facility
@@ -120,6 +122,7 @@ public class FuramaController {
                                 break;
                             case "4":
                                 //return main menu
+                                facilityService.saveDataFacility();
                                 flag3 = false;
                                 break;
                             default:

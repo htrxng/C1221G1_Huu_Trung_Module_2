@@ -1,26 +1,35 @@
 package case_study_md2.furama_resort.services.impl;
 
-import case_study_md2.furama_resort.models.Customer;
 import case_study_md2.furama_resort.models.Employee;
 import case_study_md2.furama_resort.services.EmployeeService;
+import case_study_md2.furama_resort.utils.ReadAndWriteFile;
+import case_study_md2.furama_resort.utils.UserException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    static List<Employee> employeeList = new ArrayList<Employee>();
+    private static List<Employee> employeeList = new ArrayList<Employee>();
     List<Employee> employeeListFounded = new ArrayList<Employee>();
     static Scanner scanner = new Scanner(System.in);
+    final static String EMPLOYEE_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\employee.csv";
+
+    public static List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public static void setEmployeeList(List<Employee> employeeList) {
+        EmployeeServiceImpl.employeeList = employeeList;
+    }
 
     static {
-        Employee employee1 = new Employee("E1", "NV1", "1/1/1990", "Male", 191912314, "0905999555", "nv2faa@gmail.com", "University", "Manage", 1000);
-        Employee employee2 = new Employee("E2", "NV2", "1/1/1995", "Male", 192012411, "0905999888", "fassafsa@gmail.com", "University", "Technical", 700);
-        Employee employee3 = new Employee("E3", "NV3", "1/1/1999", "Female", 19199441, "0905999666", "xaayyya@gmail.com", "University", "Fresher", 300);
-        employeeList.add(employee1);
-        employeeList.add(employee2);
-        employeeList.add(employee3);
+        // copy data từ file vào list.
+        EmployeeServiceImpl.setEmployeeList(ReadAndWriteFile.readFileEmployee(EMPLOYEE_SOURCE_FILE));
     }
+
+    final static String[] ACADEMY_LEVEL_LIST = {"High School", "Colleges", "University", "After University"};
+    final static String[] POSITION_LIST = {"Receptionist", "Service", "Specialist", "Supervisor", "Manager", "Director"};
 
     @Override
     public void add() {
@@ -32,21 +41,27 @@ public class EmployeeServiceImpl implements EmployeeService {
         String birthday = scanner.nextLine();
         System.out.print("Enter Gender: ");
         String gender = scanner.nextLine();
-        System.out.print("Enter identity card number: ");
-        int iDNumber = Integer.parseInt(scanner.nextLine());
-        System.out.print("Enter phone number: ");
-        String phone = scanner.nextLine();
-        System.out.print("Enter email: ");
-        String email = scanner.nextLine();
-        System.out.print("Enter academic level: ");
-        String academicLevel = scanner.nextLine();
-        System.out.print("Enter position: ");
-        String position = scanner.nextLine();
-        System.out.print("Enter wage: ");
-        double wage = Double.parseDouble(scanner.nextLine());
-        Employee newEmployee = new Employee(employeeCode, name, birthday, gender, iDNumber, phone, email, academicLevel, position, wage);
-        employeeList.add(newEmployee);
-        System.out.println("successfully added new "+ newEmployee);
+        try {
+            int iDNumber = inputIdentityCardNumber();
+            System.out.print("Enter phone number: ");
+            String phone = scanner.nextLine();
+            System.out.print("Enter email: ");
+            String email = scanner.nextLine();
+            System.out.print("----Academic level---- \n" +
+                    "1.High School \n" +
+                    "2.Colleges \n" +
+                    "3.University \n" +
+                    "4.After University \n" +
+                    "Enter number: -----> ");
+            int academicLevel = Integer.parseInt(scanner.nextLine());
+            int position = inputPosition();
+            double wage = inputWage();
+            Employee newEmployee = new Employee(employeeCode, name, birthday, gender, iDNumber, phone, email, ACADEMY_LEVEL_LIST[academicLevel - 1], POSITION_LIST[position - 1], wage);
+            employeeList.add(newEmployee);
+            System.out.println("successfully added new " + newEmployee);
+        } catch (UserException userException) {
+            System.out.println(userException.getMessage());
+        }
     }
 
     public List<Employee> search(String name) {
@@ -189,9 +204,51 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void display() {
         for (Employee e : employeeList
+//                ReadAndWriteFile.readFile(EMPLOYEE_SOURCE_FILE)
         ) {
             System.out.println("=========Employee List=========");
             System.out.println(e);
         }
+    }
+
+
+
+    private int inputIdentityCardNumber() throws UserException {
+        System.out.print("Enter identity card number: ");
+        String iD = scanner.nextLine();
+        if (!iD.matches("^[+]?\\d+$")) {
+            throw new UserException("identity card number is invalid!, it must be a number!");
+        }
+        return Integer.parseInt(iD);
+    }
+
+    private double inputWage() throws UserException {
+        System.out.print("Enter wage: ");
+        String wage = scanner.nextLine();
+        if (!wage.matches("^[+]?\\d+$")) {
+            throw new UserException("Wage must be a number! ");
+        }
+        return Double.parseDouble(wage);
+    }
+
+    private int inputPosition() throws UserException {
+        System.out.print("----Position List---- \n" +
+                "1.Receptionist \n" +
+                "2.Service \n" +
+                "3.Specialist \n" +
+                "4.Supervisor \n" +
+                "5.Manager \n" +
+                "6.Director \n" +
+                "Enter number: ----> ");
+        String choice = scanner.nextLine();
+        if(!choice.matches("^[1-6]$")) {
+            throw new UserException("Choice must be a number from 1 to 6! ");
+        }
+        return Integer.parseInt(choice);
+    }
+
+    //save data ~~ write to file
+    public void saveToFile() {
+        ReadAndWriteFile.writeFileEmployee(EMPLOYEE_SOURCE_FILE, EmployeeServiceImpl.getEmployeeList());
     }
 }

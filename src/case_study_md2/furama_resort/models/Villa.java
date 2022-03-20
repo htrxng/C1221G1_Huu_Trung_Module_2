@@ -39,13 +39,20 @@ public class Villa extends Facility {
         this.floorNumber = floorNumber;
     }
 
+//serviceCode,nameService,usableArea,cost,maximumNumberOfPeople,rentalForm,roomStandard,poolArea,floorNumber
+
+
     @Override
     public String toString() {
         return "Villa{" +
                 super.toString() +
-                " roomStandard='" + roomStandard + '\'' +
+                ", roomStandard='" + roomStandard + '\'' +
                 ", poolArea='" + poolArea + '\'' +
-                ", floorNumber=" + floorNumber +
+                ", floorNumber='" + floorNumber + '\'' +
                 '}';
+    }
+
+    public String getInforToCSV(){
+        return super.getInforToCSV() + ","+ roomStandard+ ","+ poolArea+ ","+ floorNumber;
     }
 }

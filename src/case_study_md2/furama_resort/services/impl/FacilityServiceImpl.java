@@ -5,6 +5,7 @@ import case_study_md2.furama_resort.models.House;
 import case_study_md2.furama_resort.models.Room;
 import case_study_md2.furama_resort.models.Villa;
 import case_study_md2.furama_resort.services.FacilityService;
+import case_study_md2.furama_resort.utils.ReadAndWriteFile;
 import case_study_md2.furama_resort.utils.ValidateInputData;
 
 import java.util.*;
@@ -14,36 +15,35 @@ public class FacilityServiceImpl implements FacilityService {
     static List<Facility> facilityListMaintenance = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
-    String codeService;
-    String nameService;
-    String usableArea;
-    String cost;
-    String maximumNumberOfPeople;
-    String rentalForm;
-    private String poolArea;
-    String floorNumber;
-    String roomStandard;
+    final static String VILLA_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\villa.csv";
+    final static String HOUSE_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\house.csv";
+    final static String ROOM_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\room.csv";
+
+
+    public static Map<Facility, Integer> getFacilityIntegerMap() {
+        return facilityIntegerMap;
+    }
+
+    public static void setFacilityIntegerMap(Map<Facility, Integer> facilityIntegerMap) {
+        FacilityServiceImpl.facilityIntegerMap = facilityIntegerMap;
+    }
 
     static {
-        Villa villa1 = new Villa("SVVL-0001", "Rent", "1000", "2000$", "20", "3 days", "5 star", "50", "2");
-        Villa villa2 = new Villa("SVVL-0002", "Rent", "500", "1500$", "15", "1 week", "4 star", "50", "2");
-        Villa villa3 = new Villa("SVVL-0003", "Rent", "700", "1800$", "20", "5 days", "5 star", "50", "3");
-        House house1 = new House("SVHO-0001", "Rent", "150", "100", "10", "2 days", "5 star", "2");
-        House house2 = new House("SVHO-0002", "Rent", "120", "100", "10", "3 days", "5 star", "3");
-        House house3 = new House("SVHO-0003", "Rent", "170", "100", "10", "4 days", "5 star", "4");
-        Room room1 = new Room("SVRO-0001", "Rent", "40", "20", "5", "1 days", "dry cleaning");
-        Room room2 = new Room("SVRO-0002", "Rent", "40", "20", "4", "2 days", "dry cleaning");
-        Room room3 = new Room("SVRO-0003", "Rent", "40", "20", "3", "3 days", "dry cleaning");
-        facilityIntegerMap.put(villa1, 0);
-        facilityIntegerMap.put(villa2, 0);
-        facilityIntegerMap.put(villa3, 0);
-        facilityIntegerMap.put(house1, 0);
-        facilityIntegerMap.put(house2, 0);
-        facilityIntegerMap.put(house3, 0);
-        facilityIntegerMap.put(room1, 0);
-        facilityIntegerMap.put(room2, 0);
-        facilityIntegerMap.put(room3, 0);
+        //copy data từ 3 file villa house và room vào map
+        FacilityServiceImpl.setFacilityIntegerMap(ReadAndWriteFile.readFileVillaHouseRoom(VILLA_SOURCE_FILE, HOUSE_SOURCE_FILE, ROOM_SOURCE_FILE));
     }
+
+    final static String[] RENTAL_FORM_LIST = {"Year", "Month", "Week", "Day", "Hour"};
+    private String codeService;
+    private String nameService;
+    private String usableArea;
+    private String cost;
+    private String maximumNumberOfPeople;
+    private int rentalForm;
+    private String poolArea;
+    private String floorNumber;
+    private String roomStandard;
+
 
     @Override
     public void displayListFacility() {
@@ -124,11 +124,14 @@ public class FacilityServiceImpl implements FacilityService {
             maximumNumberOfPeople = scanner.nextLine();
             ValidateInputData.checkMaximumNumberOfPeople(maximumNumberOfPeople);
         } while (!ValidateInputData.checkMaximumNumberOfPeople(maximumNumberOfPeople));
-        do {
-            System.out.print("enter rental form: ");
-            rentalForm = scanner.nextLine();
-            ValidateInputData.checkRentalForm(rentalForm);
-        } while (!ValidateInputData.checkRentalForm(rentalForm));
+        System.out.print("-----Rental Form List---- \n" +
+                "1.Year \n" +
+                "2.Month \n" +
+                "3.Week \n" +
+                "4.Day \n" +
+                "5.Hour \n" +
+                "Enter number: ---> ");
+        rentalForm = Integer.parseInt(scanner.nextLine());
     }
 
     @Override
@@ -157,7 +160,7 @@ public class FacilityServiceImpl implements FacilityService {
             floorNumber = scanner.nextLine();
             ValidateInputData.checkFloorNumber(floorNumber);
         } while (!ValidateInputData.checkFloorNumber(floorNumber));
-        Villa newVilla = new Villa(codeService, nameService, usableArea, cost, maximumNumberOfPeople, rentalForm, roomStandard, poolArea, floorNumber);
+        Villa newVilla = new Villa(codeService, nameService, usableArea, cost, maximumNumberOfPeople, RENTAL_FORM_LIST[rentalForm - 1], roomStandard, poolArea, floorNumber);
         facilityIntegerMap.put(newVilla, 0);
         System.out.println("successfully added new " + newVilla);
     }
@@ -183,7 +186,7 @@ public class FacilityServiceImpl implements FacilityService {
             floorNumber = scanner.nextLine();
             ValidateInputData.checkFloorNumber(floorNumber);
         } while (!ValidateInputData.checkFloorNumber(floorNumber));
-        House newHouse = new House(codeService, nameService, usableArea, cost, maximumNumberOfPeople, rentalForm, roomStandard, floorNumber);
+        House newHouse = new House(codeService, nameService, usableArea, cost, maximumNumberOfPeople, RENTAL_FORM_LIST[rentalForm - 1], roomStandard, floorNumber);
         facilityIntegerMap.put(newHouse, 0);
         System.out.println("successfully added new " + newHouse);
     }
@@ -200,8 +203,13 @@ public class FacilityServiceImpl implements FacilityService {
         enterBaseInfo();
         System.out.print("enter freeServiceIncluded: ");
         String freeServiceIncluded = scanner.nextLine();
-        Room newRoom = new Room(codeService, nameService, usableArea, cost, maximumNumberOfPeople, rentalForm, freeServiceIncluded);
+        Room newRoom = new Room(codeService, nameService, usableArea, cost, maximumNumberOfPeople, RENTAL_FORM_LIST[rentalForm - 1], freeServiceIncluded);
         facilityIntegerMap.put(newRoom, 0);
         System.out.println("successfully added new " + newRoom);
+    }
+
+
+    public void saveDataFacility() {
+        ReadAndWriteFile.writeToFileAllFacility(VILLA_SOURCE_FILE, HOUSE_SOURCE_FILE, ROOM_SOURCE_FILE, facilityIntegerMap);
     }
 }

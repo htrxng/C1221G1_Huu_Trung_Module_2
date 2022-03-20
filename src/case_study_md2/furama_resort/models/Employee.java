@@ -59,4 +59,15 @@ public class Employee extends Person {
                 ", wage=" + wage +
                 '}';
     }
+
+    // employeeCode,String name, String birthday, String gender, int iDNo, String phoneNumber, String email, String academicLevel, String position, double wage) {
+    @Override
+    public String getInformationToCSV() {
+        return  employeeCode
+                + "," + super.getInformationToCSV()
+                + "," + academicLevel
+                + "," + position
+                + "," + wage;
+    }
+
 }

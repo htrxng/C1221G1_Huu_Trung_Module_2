@@ -2,29 +2,43 @@ package case_study_md2.furama_resort.services.impl;
 
 import case_study_md2.furama_resort.models.Customer;
 import case_study_md2.furama_resort.services.CustomerService;
+import case_study_md2.furama_resort.utils.ReadAndWriteFile;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class CustomerServiceImpl implements CustomerService {
-    static List<Customer> customerList = new LinkedList<>();
+    private static List<Customer> customerList = new LinkedList<>();
     List<Customer> customerListFounded = new ArrayList<>();
     static String[] customerTypeList = {"Diamond", "Platinum", "Gold", "Silver", "Member"};
     static Scanner scanner = new Scanner(System.in);
+    final static String CUSTOMER_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\customer.csv";
+
+    public static List<Customer> getCustomerList() {
+        return customerList;
+    }
+
+    public static void setCustomerList(List<Customer> customerList) {
+        CustomerServiceImpl.customerList = customerList;
+    }
 
     static {
-        Customer customer1 = new Customer("Tom", "1991", "Male", 191911410, "0519151111", "tommysheldby@gmail.com", "Vip1", "Diamond", "Birmingham");
-        Customer customer2 = new Customer("Grace", "1995", "FeMale", 191911140, "0519111232111", "grace@gmail.com", "Vip2", "Diamond", "London");
-        Customer customer3 = new Customer("Polly", "1890", "FeMale", 19515110, "0141414156", "polly@gmail.com", "Vip3", "Diamond", "Birmingham");
-        customerList.add(customer1);
-        customerList.add(customer2);
-        customerList.add(customer3);
+        //   copy data từ file vào list.
+        CustomerServiceImpl.setCustomerList(ReadAndWriteFile.readFileCustomer(CUSTOMER_SOURCE_FILE));
     }
+
+    //    static {
+//        Customer customer1 = new Customer("Tom", "1991", "Male", 191911410, "0519151111", "tommysheldby@gmail.com", "Vip1", "Diamond", "Birmingham");
+//        Customer customer2 = new Customer("Grace", "1995", "FeMale", 191911140, "0519111232111", "grace@gmail.com", "Vip2", "Diamond", "London");
+//        Customer customer3 = new Customer("Polly", "1890", "FeMale", 19515110, "0141414156", "polly@gmail.com", "Vip3", "Diamond", "Birmingham");
+//        customerList.add(customer1);
+//        customerList.add(customer2);
+//        customerList.add(customer3);
+//    }
 
     @Override
     public void add() {
+        System.out.print("Enter customer code: ");
+        String customerCode = scanner.nextLine();
         System.out.print("Enter Name: ");
         String name = scanner.nextLine();
         System.out.print("Enter Birthday: ");
@@ -37,12 +51,10 @@ public class CustomerServiceImpl implements CustomerService {
         String phone = scanner.nextLine();
         System.out.print("Enter email: ");
         String email = scanner.nextLine();
-        System.out.print("Enter customer code: ");
-        String customerCode = scanner.nextLine();
         String customerType = chooseCustomerType(); //choose customerType
         System.out.print("Enter address: ");
         String address = scanner.nextLine();
-        Customer newCustomer = new Customer(name, birthday, gender, iDNo, phone, email, customerCode, customerType, address);
+        Customer newCustomer = new Customer(customerCode,name, birthday, gender, iDNo, phone, email, customerType, address);
         customerList.add(newCustomer);
         System.out.println("successfully added new "+ newCustomer);
     }
@@ -166,7 +178,7 @@ public class CustomerServiceImpl implements CustomerService {
                 }
             }
         } else {
-            System.err.println("this name is not exist!");
+            System.out.println("this name is not exist!");
         }
     }
 
@@ -180,7 +192,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public String chooseCustomerType() {
-        String customerType = null;
+//        String customerType = null;
         System.out.print("Customer Type List \n" +
                 "1.Diamond\n" +
                 "2.Platinum\n" +
@@ -190,5 +202,10 @@ public class CustomerServiceImpl implements CustomerService {
                 "Choose Type: ");
         int choose = Integer.parseInt(scanner.nextLine());
         return customerTypeList[choose - 1];
+    }
+
+    //save data ~~ write to file
+    public void saveToFile() {
+        ReadAndWriteFile.writeFileCustomer(CUSTOMER_SOURCE_FILE,CustomerServiceImpl.getCustomerList());
     }
 }

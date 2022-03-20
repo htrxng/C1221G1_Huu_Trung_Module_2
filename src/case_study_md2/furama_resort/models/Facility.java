@@ -75,8 +75,12 @@ public abstract class Facility {
                 ", nameService='" + nameService + '\'' +
                 ", usableArea='" + usableArea + '\'' +
                 ", cost='" + cost + '\'' +
-                ", maximumNumberOfPeople=" + maximumNumberOfPeople +
-                ", rentalForm='" + rentalForm + '\'' +
-                ',';
+                ", maximumNumberOfPeople='" + maximumNumberOfPeople + '\'' +
+                ", rentalForm='" + rentalForm + '\'';
     }
+
+    public String getInforToCSV(){
+        return serviceCode+","+nameService+","+usableArea+","+cost+","+maximumNumberOfPeople+","+rentalForm;
+    }
+
 }

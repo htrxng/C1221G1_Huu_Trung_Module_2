@@ -8,7 +8,7 @@ public class House extends Facility {
     }
 
     public House(String serviceCode, String nameService, String usableArea, String cost, String maximumNumberOfPeople, String rentalForm, String roomStandard, String floorNumber) {
-        super(serviceCode,nameService, usableArea, cost, maximumNumberOfPeople, rentalForm);
+        super(serviceCode, nameService, usableArea, cost, maximumNumberOfPeople, rentalForm);
         this.roomStandard = roomStandard;
         this.floorNumber = floorNumber;
     }
@@ -29,12 +29,21 @@ public class House extends Facility {
         this.floorNumber = floorNumber;
     }
 
+    //serviceCode,nameService,usableArea, cost, maximumNumberOfPeople, rentalForm,roomStandard, floorNumber) {
+
+
     @Override
     public String toString() {
         return "House{" +
                 super.toString() +
-                " roomStandard='" + roomStandard + '\'' +
-                ", floorNumber=" + floorNumber +
+                ", roomStandard='" + roomStandard + '\'' +
+                ", floorNumber='" + floorNumber + '\'' +
                 '}';
     }
+
+    @Override
+    public String getInforToCSV() {
+        return super.getInforToCSV() + "," + roomStandard + "," + floorNumber;
+    }
+
 }
