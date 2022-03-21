@@ -22,10 +22,6 @@ public class Customer extends Person {
         return customerCode;
     }
 
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
-    }
-
     public String getTypeOfCustomer() {
         return typeOfCustomer;
     }

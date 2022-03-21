@@ -4,6 +4,7 @@ import case_study_md2.furama_resort.models.Employee;
 import case_study_md2.furama_resort.services.EmployeeService;
 import case_study_md2.furama_resort.utils.ReadAndWriteFile;
 import case_study_md2.furama_resort.utils.UserException;
+import case_study_md2.furama_resort.utils.ValidateInputData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,30 +31,45 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     final static String[] ACADEMY_LEVEL_LIST = {"High School", "Colleges", "University", "After University"};
     final static String[] POSITION_LIST = {"Receptionist", "Service", "Specialist", "Supervisor", "Manager", "Director"};
+    private String email;
+    private String phone;
+    private String gender;
 
     @Override
     public void add() {
-        System.out.print("Enter Employee Code: ");
-        String employeeCode = scanner.nextLine();
+        String employeeCode;
+        do {
+            System.out.print("[E * * * *] /* is a number/ \n" +
+                    "Enter Employee Code: ");
+            employeeCode = scanner.nextLine();
+            ValidateInputData.checkEmployeeCode(employeeCode);
+        } while (!ValidateInputData.checkEmployeeCode(employeeCode));
         System.out.print("Enter Name: ");
         String name = scanner.nextLine();
         System.out.print("Enter Birthday: ");
         String birthday = scanner.nextLine();
-        System.out.print("Enter Gender: ");
-        String gender = scanner.nextLine();
+        do {
+            System.out.print("Gender includes [Male,Female,Others] \n" +
+                    "Enter Gender: ");
+            gender = scanner.nextLine();
+            ValidateInputData.checkGender(gender);
+        } while (!ValidateInputData.checkGender(gender));
         try {
             int iDNumber = inputIdentityCardNumber();
-            System.out.print("Enter phone number: ");
-            String phone = scanner.nextLine();
-            System.out.print("Enter email: ");
-            String email = scanner.nextLine();
-            System.out.print("----Academic level---- \n" +
-                    "1.High School \n" +
-                    "2.Colleges \n" +
-                    "3.University \n" +
-                    "4.After University \n" +
-                    "Enter number: -----> ");
-            int academicLevel = Integer.parseInt(scanner.nextLine());
+            do {
+                System.out.print("Phone start with 0 and total 10 numbers \n" +
+                        "phone sample : 0123456789 \n" +
+                        "Enter phone number: ");
+                phone = scanner.nextLine();
+                ValidateInputData.checkPhone(phone);
+            } while (!ValidateInputData.checkPhone(phone));
+            do {
+                System.out.print("email sample: [huutrung02@gmail.com] \n" +
+                        "Enter email: ");
+                email = scanner.nextLine();
+                ValidateInputData.checkEmail(email);
+            } while (!ValidateInputData.checkEmail(email));
+            int academicLevel = inputAcademicLevel();
             int position = inputPosition();
             double wage = inputWage();
             Employee newEmployee = new Employee(employeeCode, name, birthday, gender, iDNumber, phone, email, ACADEMY_LEVEL_LIST[academicLevel - 1], POSITION_LIST[position - 1], wage);
@@ -91,107 +107,100 @@ public class EmployeeServiceImpl implements EmployeeService {
                 if (employeeCode.equals(e.getEmployeeCode())) {
                     System.out.println(e);
                     boolean flag = true;
-                    do {
-                        System.out.print("choose information need update: \n" +
-                                "1.Employee Code \n" +
-                                "2.Name \n" +
-                                "3.Birthday \n" +
-                                "4.Gender \n" +
-                                "5.Identity Card Number \n" +
-                                "6.Phone \n" +
-                                "7.Email \n" +
-                                "8.Academic Level \n" +
-                                "9.Position \n" +
-                                "10.Wage \n" +
-                                "0.End update and exit \n" +
-                                "------->: ");
-                        String choice = scanner.nextLine();
-                        switch (choice) {
-                            case "1":
-                                //
-                                System.out.print("enter new Employee Code: ");
-                                String newEmployeeCode = scanner.nextLine();
-                                if (!newEmployeeCode.equals("")) {
-                                    e.setEmployeeCode(newEmployeeCode);
-                                }
-                                break;
-                            case "2":
-                                //
-                                System.out.print("enter new Name: ");
-                                String newName = scanner.nextLine();
-                                if (!newName.equals("")) {
-                                    e.setName(newName);
-                                }
-                                break;
-                            case "3":
-                                //
-                                System.out.print("enter new Birthday: ");
-                                String birthday = scanner.nextLine();
-                                if (!birthday.equals("")) {
-                                    e.setBirthday(birthday);
-                                }
-                                break;
-                            case "4":
-                                //
-                                System.out.print("enter new Gender: ");
-                                String gender = scanner.nextLine();
-                                if (!gender.equals("")) {
+                    try {
+                        do {
+                            System.out.print("choose information need update: \n" +
+                                    "1.Name \n" +
+                                    "2.Birthday \n" +
+                                    "3.Gender \n" +
+                                    "4.Identity Card Number \n" +
+                                    "5.Phone \n" +
+                                    "6.Email \n" +
+                                    "7.Academic Level \n" +
+                                    "8.Position \n" +
+                                    "9.Wage \n" +
+                                    "0.End update and exit \n" +
+                                    "------->: ");
+                            String choice = scanner.nextLine();
+                            switch (choice) {
+                                case "1":
+                                    //
+                                    System.out.print("enter new Name: ");
+                                    String newName = scanner.nextLine();
+                                    if (!newName.equals("")) {
+                                        e.setName(newName);
+                                    }
+                                    break;
+                                case "2":
+                                    //
+                                    System.out.print("enter new Birthday: ");
+                                    String birthday = scanner.nextLine();
+                                    if (!birthday.equals("")) {
+                                        e.setBirthday(birthday);
+                                    }
+                                    break;
+                                case "3":
+                                    do {
+                                        System.out.print("Gender includes [Male,Female,Others] \n" +
+                                                "Enter Gender: ");
+                                        gender = scanner.nextLine();
+                                        ValidateInputData.checkGender(gender);
+                                    } while (!ValidateInputData.checkGender(gender));
                                     e.setGender(gender);
-                                }
-                                break;
-                            case "5":
-                                //
-                                System.out.print("enter new Identity Card Number: ");
-                                int iDNo = Integer.parseInt(scanner.nextLine());
-                                e.setiDNo(iDNo);
-                                break;
-                            case "6":
-                                //
-                                System.out.print("enter new phone: ");
-                                String phone = scanner.nextLine();
-                                if (!phone.equals("")) {
+                                    break;
+                                case "4":
+                                    System.out.print("enter new Identity Card Number: ");
+                                    int iDNo = inputIdentityCardNumber();
+                                    e.setiDNo(iDNo);
+                                    break;
+                                case "5":
+                                    //
+                                    do {
+                                        System.out.print("Phone start with 0 and total 10 numbers \n" +
+                                                "phone sample : 0123456789 \n" +
+                                                "Enter new phone number: ");
+                                        phone = scanner.nextLine();
+                                        ValidateInputData.checkPhone(phone);
+                                    } while (!ValidateInputData.checkPhone(phone));
                                     e.setPhoneNumber(phone);
-                                }
-                                break;
-                            case "7":
-                                //
-                                System.out.print("enter new email: ");
-                                String email = scanner.nextLine();
-                                if (!email.equals("")) {
+                                    break;
+                                case "6":
+                                    //
+                                    do {
+                                        System.out.print("email sample: [huutrung02@gmail.com] \n" +
+                                                "Enter email: ");
+                                        email = scanner.nextLine();
+                                        ValidateInputData.checkEmail(email);
+                                    } while (!ValidateInputData.checkEmail(email));
                                     e.setEmail(email);
-                                }
-                                break;
-                            case "8":
-                                //
-                                System.out.print("enter new Academic Level : ");
-                                String academicLevel = scanner.nextLine();
-                                if (!academicLevel.equals("")) {
-                                    e.setAcademicLevel(academicLevel);
-                                }
-                                break;
-                            case "9":
-                                //
-                                System.out.print("enter new Position : ");
-                                String position = scanner.nextLine();
-                                if (!position.equals("")) {
-                                    e.setPosition(position);
-                                }
-                                break;
-                            case "10":
-                                //
-                                System.out.print("enter new wage : ");
-                                double wage = Double.parseDouble(scanner.nextLine());
-                                e.setWage(wage);
-                                break;
-                            case "0":
-                                //exit
-                                System.out.println("-End update processing- ");
-                                flag = false;
-                                break;
-                            default:
-                                System.out.println("not a choice!");
-                        }
-                    } while (flag);
+                                    break;
+                                case "7":
+                                    //
+                                    int academicLevel = inputAcademicLevel();
+                                    e.setAcademicLevel(ACADEMY_LEVEL_LIST[academicLevel - 1]);
+                                    break;
+                                case "8":
+                                    //
+                                    int position = inputPosition();
+                                    e.setPosition(POSITION_LIST[position - 1]);
+                                    break;
+                                case "9":
+                                    //
+                                    double wage = inputWage();
+                                    e.setWage(wage);
+                                    break;
+                                case "0":
+                                    //exit
+                                    System.out.println("-End update processing- ");
+                                    flag = false;
+                                    break;
+                                default:
+                                    System.out.println("not a choice!");
+                            }
+                        } while (flag);
+                    } catch (UserException userException) {
+                        System.out.println(userException.getMessage());
+                    }
                     System.out.println(e);
                     break;
                 }
@@ -210,8 +219,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             System.out.println(e);
         }
     }
-
-
 
     private int inputIdentityCardNumber() throws UserException {
         System.out.print("Enter identity card number: ");
@@ -241,8 +248,22 @@ public class EmployeeServiceImpl implements EmployeeService {
                 "6.Director \n" +
                 "Enter number: ----> ");
         String choice = scanner.nextLine();
-        if(!choice.matches("^[1-6]$")) {
+        if (!choice.matches("^[1-6]$")) {
             throw new UserException("Choice must be a number from 1 to 6! ");
+        }
+        return Integer.parseInt(choice);
+    }
+
+    private int inputAcademicLevel() throws UserException {
+        System.out.print("----Academic level---- \n" +
+                "1.High School \n" +
+                "2.Colleges \n" +
+                "3.University \n" +
+                "4.After University \n" +
+                "Enter number: -----> ");
+        String choice = scanner.nextLine();
+        if (!choice.matches("^[1-4]$")) {
+            throw new UserException("Choice must be a number from 1 to 4! ");
         }
         return Integer.parseInt(choice);
     }

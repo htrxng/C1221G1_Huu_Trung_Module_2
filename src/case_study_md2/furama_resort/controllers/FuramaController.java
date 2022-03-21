@@ -151,7 +151,7 @@ public class FuramaController {
                                 // display list booking
                                 break;
                             case "3":
-                                //Create new constracts
+                                //Create new contracts
                                 break;
                             case "4":
                                 //Display contracts list

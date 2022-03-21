@@ -4,6 +4,16 @@ import case_study_md2.furama_resort.services.BookingService;
 
 public class BookingServiceImpl implements BookingService {
     @Override
+    public void addNewBooking() {
+
+    }
+
+    @Override
+    public void displayBookingList() {
+
+    }
+
+    @Override
     public void createNewContracts() {
 
     }
@@ -14,17 +24,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void add() {
+    public void editContracts() {
 
     }
 
-    @Override
-    public void edit() {
-
-    }
-
-    @Override
-    public void display() {
-
-    }
 }

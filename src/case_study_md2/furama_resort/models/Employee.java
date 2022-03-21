@@ -21,10 +21,6 @@ public class Employee extends Person {
         return employeeCode;
     }
 
-    public void setEmployeeCode(String employeeCode) {
-        this.employeeCode = employeeCode;
-    }
-
     public String getAcademicLevel() {
         return academicLevel;
     }
