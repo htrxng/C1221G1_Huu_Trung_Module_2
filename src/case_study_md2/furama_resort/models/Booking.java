@@ -3,70 +3,60 @@ package case_study_md2.furama_resort.models;
 import java.util.Date;
 
 public class Booking {
-    private int bookingCode;
-    private Date dayStart;
-    private Date dayEnd;
-    private int customerCode;
-    private String serviceName;
-    private String serviceType;
+    private Integer bookingCode;
+    private String dayStart;
+    private String dayEnd;
+    private Customer customer;
+    private Facility facility;
 
     public Booking() {
     }
 
-    public Booking(int bookingCode, Date dayStart, Date dayEnd, int customerCode, String serviceName, String serviceType) {
+    public Booking(Integer bookingCode, String dayStart, String dayEnd, Customer customer, Facility facility) {
         this.bookingCode = bookingCode;
         this.dayStart = dayStart;
         this.dayEnd = dayEnd;
-        this.customerCode = customerCode;
-        this.serviceName = serviceName;
-        this.serviceType = serviceType;
+        this.customer = customer;
+        this.facility = facility;
     }
 
-    public int getBookingCode() {
+    public Integer getBookingCode() {
         return bookingCode;
     }
 
-    public void setBookingCode(int bookingCode) {
+    public void setBookingCode(Integer bookingCode) {
         this.bookingCode = bookingCode;
     }
 
-    public Date getDayStart() {
+    public String getDayStart() {
         return dayStart;
     }
 
-    public void setDayStart(Date dayStart) {
+    public void setDayStart(String dayStart) {
         this.dayStart = dayStart;
     }
 
-    public Date getDayEnd() {
+    public String getDayEnd() {
         return dayEnd;
     }
 
-    public void setDayEnd(Date dayEnd) {
+    public void setDayEnd(String dayEnd) {
         this.dayEnd = dayEnd;
     }
 
-    public int getCustomerCode() {
-        return customerCode;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerCode(int customerCode) {
-        this.customerCode = customerCode;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getServiceType() {
-        return serviceType;
-    }
-
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 }

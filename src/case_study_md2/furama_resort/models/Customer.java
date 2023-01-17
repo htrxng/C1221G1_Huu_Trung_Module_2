@@ -38,20 +38,6 @@ public class Customer extends Person {
         this.address = address;
     }
 
-    //public Customer(String customerCode, String name, String birthday, String gender, int iDNo, String phoneNumber, String email,  String typeOfCustomer, String address) {
-//    @Override
-//    public String toString() {
-//        return getCustomerCode() + "," +
-//                getName() + "," +
-//                getBirthday() + "," +
-//                getGender() + "," +
-//                getiDNo() + "," +
-//                getPhoneNumber() + "," +
-//                getEmail() + "," +
-//                getTypeOfCustomer() + "," +
-//                getAddress();
-//    }
-
 
     @Override
     public String toString() {

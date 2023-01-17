@@ -21,7 +21,7 @@ public class ReadAndWriteFile {
             }
             bufferedWriter.close();
         } catch (IOException e) {
-            System.out.println("File đích không tồn tại!");
+            System.out.println("file does not exist!");
             e.printStackTrace();
         }
     }
@@ -40,7 +40,7 @@ public class ReadAndWriteFile {
             }
             bufferedWriter.close();
         } catch (IOException e) {
-            System.out.println("File đích không tồn tại!");
+            System.out.println("file does not exist");
             e.printStackTrace();
         }
     }
@@ -93,6 +93,7 @@ public class ReadAndWriteFile {
         return employeeList;
     }
 
+
     public static Map<Facility,Integer>  readFileVillaHouseRoom(String filePathVilla,String filePathHouse,String filePathRoom) {
         Map<Facility,Integer> facilityIntegerMap = new LinkedHashMap<>();
         try {
@@ -126,7 +127,7 @@ public class ReadAndWriteFile {
             brHouse.close();
             brRoom.close();
         } catch (Exception e) {
-            System.out.println("File không tồn tại or nội dung có lỗi!");
+            System.out.println("file does not exist or error content!");
         }
         return facilityIntegerMap;
     }
@@ -167,7 +168,7 @@ public class ReadAndWriteFile {
             bufferedWriterHouse.close();
             bufferedWriterRoom.close();
         } catch (IOException e) {
-            System.out.println("File đích không tồn tại!");
+            System.out.println("file does not exist!");
             e.printStackTrace();
         }
     }

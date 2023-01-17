@@ -1,6 +1,6 @@
 package ss7_interface_and_abstract_class.bai_tap.develop_interface_colorable_for_geometry_class;
 
-public class Square extends Shape implements Colorable {
+public class Square implements Colorable {
     private double edge;
     private double areaSquare;
 
@@ -20,19 +20,28 @@ public class Square extends Shape implements Colorable {
         this.edge = edge;
     }
 
-    @Override
-    public String getName() {
-        return "Square";
-    }
+//    @Override
+//    public String getName() {
+//        return "Square";
+//    }
+//
+//    @Override
+//    public double getArea() {
+//        return areaSquare;
+//    }
+
+//    @Override
+//    public void areaCalculator() {
+//        areaSquare = this.edge * this.edge;
+//    }
+
 
     @Override
-    public double getArea() {
-        return areaSquare;
-    }
-
-    @Override
-    public void areaCalculator() {
-        areaSquare = this.edge * this.edge;
+    public String toString() {
+        return "Square{" +
+                "edge=" + edge +
+                ", areaSquare=" + areaSquare +
+                '}';
     }
 
     @Override

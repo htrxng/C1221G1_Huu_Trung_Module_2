@@ -12,14 +12,6 @@ import java.util.*;
 
 public class FacilityServiceImpl implements FacilityService {
     static Map<Facility, Integer> facilityIntegerMap = new LinkedHashMap<>();
-    static List<Facility> facilityListMaintenance = new ArrayList<>();
-    static Scanner scanner = new Scanner(System.in);
-
-    final static String VILLA_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\villa.csv";
-    final static String HOUSE_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\house.csv";
-    final static String ROOM_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\room.csv";
-
-
     public static Map<Facility, Integer> getFacilityIntegerMap() {
         return facilityIntegerMap;
     }
@@ -27,6 +19,13 @@ public class FacilityServiceImpl implements FacilityService {
     public static void setFacilityIntegerMap(Map<Facility, Integer> facilityIntegerMap) {
         FacilityServiceImpl.facilityIntegerMap = facilityIntegerMap;
     }
+
+    static List<Facility> facilityListMaintenance = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+
+    final static String VILLA_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\villa.csv";
+    final static String HOUSE_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\house.csv";
+    final static String ROOM_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\room.csv";
 
     static { //copy data từ 3 file villa house và room vào map
         FacilityServiceImpl.setFacilityIntegerMap(ReadAndWriteFile.readFileVillaHouseRoom(VILLA_SOURCE_FILE, HOUSE_SOURCE_FILE, ROOM_SOURCE_FILE));
@@ -37,7 +36,7 @@ public class FacilityServiceImpl implements FacilityService {
     private String nameService;
     private String usableArea;
     private String cost;
-    private String maximumNumberOfPeople;
+    private String capacity;
     private String rentalForm;
     private String floorNumber;
     private String roomStandard;
@@ -118,11 +117,11 @@ public class FacilityServiceImpl implements FacilityService {
             ValidateInputData.checkCost(cost);
         } while (!ValidateInputData.checkCost(cost));
         do {
-            System.out.print("|maximum number of people < 20| \n" +
-                    "enter maximum number of people: ");
-            maximumNumberOfPeople = scanner.nextLine();
-            ValidateInputData.checkMaximumNumberOfPeople(maximumNumberOfPeople);
-        } while (!ValidateInputData.checkMaximumNumberOfPeople(maximumNumberOfPeople));
+            System.out.print("|capacity < 20| \n" +
+                    "enter capacity: ");
+            capacity = scanner.nextLine();
+            ValidateInputData.checkCapacity(capacity);
+        } while (!ValidateInputData.checkCapacity(capacity));
         do {
             System.out.print("-----Rental Form List---- \n" +
                     "1.Year \n" +
@@ -163,7 +162,7 @@ public class FacilityServiceImpl implements FacilityService {
             floorNumber = scanner.nextLine();
             ValidateInputData.checkFloorNumber(floorNumber);
         } while (!ValidateInputData.checkFloorNumber(floorNumber));
-        Villa newVilla = new Villa(codeService, nameService, usableArea, cost, maximumNumberOfPeople, RENTAL_FORM_LIST[Integer.parseInt(rentalForm) - 1], roomStandard, poolArea, floorNumber);
+        Villa newVilla = new Villa(codeService, nameService, usableArea, cost, capacity, RENTAL_FORM_LIST[Integer.parseInt(rentalForm) - 1], roomStandard, poolArea, floorNumber);
         facilityIntegerMap.put(newVilla, 0);
         System.out.println("successfully added new " + newVilla);
     }
@@ -189,7 +188,7 @@ public class FacilityServiceImpl implements FacilityService {
             floorNumber = scanner.nextLine();
             ValidateInputData.checkFloorNumber(floorNumber);
         } while (!ValidateInputData.checkFloorNumber(floorNumber));
-        House newHouse = new House(codeService, nameService, usableArea, cost, maximumNumberOfPeople, RENTAL_FORM_LIST[Integer.parseInt(rentalForm) - 1], roomStandard, floorNumber);
+        House newHouse = new House(codeService, nameService, usableArea, cost, capacity, RENTAL_FORM_LIST[Integer.parseInt(rentalForm) - 1], roomStandard, floorNumber);
         facilityIntegerMap.put(newHouse, 0);
         System.out.println("successfully added new " + newHouse);
     }
@@ -206,12 +205,12 @@ public class FacilityServiceImpl implements FacilityService {
         enterBaseInfo();
         System.out.print("enter freeServiceIncluded: ");
         String freeServiceIncluded = scanner.nextLine();
-        Room newRoom = new Room(codeService, nameService, usableArea, cost, maximumNumberOfPeople, RENTAL_FORM_LIST[Integer.parseInt(rentalForm) - 1], freeServiceIncluded);
+        Room newRoom = new Room(codeService, nameService, usableArea, cost, capacity, RENTAL_FORM_LIST[Integer.parseInt(rentalForm) - 1], freeServiceIncluded);
         facilityIntegerMap.put(newRoom, 0);
         System.out.println("successfully added new " + newRoom);
     }
 
     public void saveDataFacility() {
-        ReadAndWriteFile.writeToFileAllFacility(VILLA_SOURCE_FILE, HOUSE_SOURCE_FILE, ROOM_SOURCE_FILE, facilityIntegerMap);
+        ReadAndWriteFile.writeToFileAllFacility(VILLA_SOURCE_FILE, HOUSE_SOURCE_FILE, ROOM_SOURCE_FILE, getFacilityIntegerMap());
     }
 }

@@ -10,10 +10,6 @@ import java.util.*;
 
 public class CustomerServiceImpl implements CustomerService {
     private static List<Customer> customerList = new LinkedList<>();
-    List<Customer> customerListFounded = new ArrayList<>();
-    final static String[] CUSTOMER_TYPE_LIST = {"Diamond", "Platinum", "Gold", "Silver", "Member"};
-    static Scanner scanner = new Scanner(System.in);
-    final static String CUSTOMER_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\customer.csv";
 
     public static List<Customer> getCustomerList() {
         return customerList;
@@ -22,6 +18,12 @@ public class CustomerServiceImpl implements CustomerService {
     public static void setCustomerList(List<Customer> customerList) {
         CustomerServiceImpl.customerList = customerList;
     }
+
+    List<Customer> customerListFounded = new ArrayList<>();
+
+    static Scanner scanner = new Scanner(System.in);
+    final static String CUSTOMER_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\customer.csv";
+    final static String[] CUSTOMER_TYPE_LIST = {"Diamond", "Platinum", "Gold", "Silver", "Member"};
 
     static {
         //   copy data từ file vào list.
@@ -94,15 +96,14 @@ public class CustomerServiceImpl implements CustomerService {
     public void edit() {
         System.out.print("enter customer name: ");
         String name = scanner.nextLine();
-        if (search(name).size() != 0) {
-            for (Customer e : search(name)
-            ) {
+        search(name);
+        if (customerListFounded.size() != 0) {
+            for (Customer e : customerListFounded) {
                 System.out.println(e);
             }
             System.out.print("enter customer code need edit: ");
             String cusCode = scanner.nextLine();
-            for (Customer e : search(name)
-            ) {
+            for (Customer e : customerListFounded) {
                 if (cusCode.equals(e.getCustomerCode())) {
                     System.out.println(e);
                     boolean flag = true;

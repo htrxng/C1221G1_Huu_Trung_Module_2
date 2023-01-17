@@ -1,0 +1,16 @@
+
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(†οήγϊÿÿÿÿ
+t
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¬Ήζόÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Π™ΤΙϋÿÿÿÿ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(γό®κόÿÿÿÿ
+[
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(†Λότ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ρ„©όÿÿÿÿ
+h
+java:S3776`"RRefactor this method to reduce its Cognitive Complexity from 52 to the 15 allowed.(τΉνδ
+T
+java:S1155d">Use isEmpty() to check whether the collection is empty or not.(μÒ»•

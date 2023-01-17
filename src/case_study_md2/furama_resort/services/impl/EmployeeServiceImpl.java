@@ -12,9 +12,6 @@ import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private static List<Employee> employeeList = new ArrayList<Employee>();
-    List<Employee> employeeListFounded = new ArrayList<Employee>();
-    static Scanner scanner = new Scanner(System.in);
-    final static String EMPLOYEE_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\employee.csv";
 
     public static List<Employee> getEmployeeList() {
         return employeeList;
@@ -24,13 +21,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeServiceImpl.employeeList = employeeList;
     }
 
+    List<Employee> employeeListFounded = new ArrayList<Employee>();
+    static Scanner scanner = new Scanner(System.in);
+    final static String EMPLOYEE_SOURCE_FILE = "src\\case_study_md2\\furama_resort\\data\\employee.csv";
+    final static String[] ACADEMY_LEVEL_LIST = {"High School", "Colleges", "University", "After University"};
+    final static String[] POSITION_LIST = {"Receptionist", "Service", "Specialist", "Supervisor", "Manager", "Director"};
+
     static {
         // copy data từ file vào list.
         EmployeeServiceImpl.setEmployeeList(ReadAndWriteFile.readFileEmployee(EMPLOYEE_SOURCE_FILE));
     }
 
-    final static String[] ACADEMY_LEVEL_LIST = {"High School", "Colleges", "University", "After University"};
-    final static String[] POSITION_LIST = {"Receptionist", "Service", "Specialist", "Supervisor", "Manager", "Director"};
     private String email;
     private String phone;
     private String gender;
@@ -95,15 +96,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void edit() {
         System.out.print("enter employee name: ");
         String name = scanner.nextLine();
-        if (search(name).size() != 0) {
-            for (Employee e : search(name)
-            ) {
+        search(name);
+        if (employeeListFounded.size() != 0) {
+            for (Employee e : employeeListFounded) {
                 System.out.println(e);
             }
             System.out.print("enter employee code need edit: ");
             String employeeCode = scanner.nextLine();
-            for (Employee e : search(name)
-            ) {
+            for (Employee e : employeeListFounded) {
                 if (employeeCode.equals(e.getEmployeeCode())) {
                     System.out.println(e);
                     boolean flag = true;
@@ -212,9 +212,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void display() {
-        for (Employee e : employeeList
-//                ReadAndWriteFile.readFile(EMPLOYEE_SOURCE_FILE)
-        ) {
+        for (Employee e : employeeList) {
             System.out.println("=========Employee List=========");
             System.out.println(e);
         }

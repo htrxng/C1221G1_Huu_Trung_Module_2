@@ -5,18 +5,18 @@ public abstract class Facility {
     private String nameService;
     private String usableArea;
     private String cost;
-    private String maximumNumberOfPeople;
+    private String capacity;
     private String rentalForm;
 
     public Facility() {
     }
 
-    public Facility(String serviceCode, String nameService, String usableArea, String cost, String maximumNumberOfPeople, String rentalForm) {
+    public Facility(String serviceCode, String nameService, String usableArea, String cost, String capacity, String rentalForm) {
         this.serviceCode = serviceCode;
         this.nameService = nameService;
         this.usableArea = usableArea;
         this.cost = cost;
-        this.maximumNumberOfPeople = maximumNumberOfPeople;
+        this.capacity = capacity;
         this.rentalForm = rentalForm;
     }
 
@@ -52,12 +52,12 @@ public abstract class Facility {
         this.cost = cost;
     }
 
-    public String getMaximumNumberOfPeople() {
-        return maximumNumberOfPeople;
+    public String getCapacity() {
+        return capacity;
     }
 
-    public void setMaximumNumberOfPeople(String maximumNumberOfPeople) {
-        this.maximumNumberOfPeople = maximumNumberOfPeople;
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
     }
 
     public String getRentalForm() {
@@ -75,12 +75,12 @@ public abstract class Facility {
                 ", nameService='" + nameService + '\'' +
                 ", usableArea='" + usableArea + '\'' +
                 ", cost='" + cost + '\'' +
-                ", maximumNumberOfPeople='" + maximumNumberOfPeople + '\'' +
+                ", maximumNumberOfPeople='" + capacity + '\'' +
                 ", rentalForm='" + rentalForm + '\'';
     }
 
     public String getInforToCSV(){
-        return serviceCode+","+nameService+","+usableArea+","+cost+","+maximumNumberOfPeople+","+rentalForm;
+        return serviceCode+","+nameService+","+usableArea+","+cost+","+ capacity +","+rentalForm;
     }
 
 }

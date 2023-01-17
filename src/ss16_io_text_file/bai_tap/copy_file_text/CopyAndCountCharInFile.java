@@ -6,9 +6,9 @@ public class CopyAndCountCharInFile {
 
     public static int countChar(List<String> copyFile) {
         int count = 0;
-        String copyFileString = "";
+        StringBuilder copyFileString = new StringBuilder();
         for (String s : copyFile) {
-            copyFileString += s;
+            copyFileString.append(s);
         }
         for (int i = 0; i < copyFileString.length(); i++) {
             if (!Character.isSpace(copyFileString.charAt(i))) {

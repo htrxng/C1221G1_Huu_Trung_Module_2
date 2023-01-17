@@ -1,5 +1,6 @@
 package case_study_md2.furama_resort.controllers;
 
+import case_study_md2.furama_resort.models.Customer;
 import case_study_md2.furama_resort.services.impl.CustomerServiceImpl;
 import case_study_md2.furama_resort.services.impl.EmployeeServiceImpl;
 import case_study_md2.furama_resort.services.impl.FacilityServiceImpl;
@@ -8,11 +9,14 @@ import java.util.Scanner;
 
 public class FuramaController {
     Scanner scanner = new Scanner(System.in);
+
     public FuramaController() {
     }
+
     EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
     CustomerServiceImpl customerService = new CustomerServiceImpl();
     FacilityServiceImpl facilityService = new FacilityServiceImpl();
+
     public void displayMainMenu() {
         boolean flag = true;
         do {
@@ -24,7 +28,7 @@ public class FuramaController {
                     "5. Promotion Management \n" +
                     "0. Exit");
             System.out.print("Choose function: ");
-            String  chooseMainFunction = scanner.nextLine();
+            String chooseMainFunction = scanner.nextLine();
             switch (chooseMainFunction) {
                 case "1":
                     // Employee Management
@@ -103,7 +107,7 @@ public class FuramaController {
                                 "1.Display list facility \n" +
                                 "2.Add new facility \n" +
                                 "3.Display list facility maintenance\n" +
-                                "4.Return main menu ");
+                                "4.Save data and return main menu ");
                         System.out.print("Choose function: ");
                         String choose = scanner.nextLine();
                         switch (choose) {
@@ -133,7 +137,7 @@ public class FuramaController {
                 case "4":
                     // Booking Management
                     boolean flag4 = true;
-                    do{
+                    do {
                         System.out.println("-------Menu Booking Management Function-------\n" +
                                 "1.Add new booking \n" +
                                 "2.Display list booking \n" +
@@ -205,4 +209,5 @@ public class FuramaController {
             }
         } while (flag);
     }
+
 }

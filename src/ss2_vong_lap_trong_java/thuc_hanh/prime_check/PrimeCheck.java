@@ -1,5 +1,6 @@
 package ss2_vong_lap_trong_java.thuc_hanh.prime_check;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class PrimeCheck {
@@ -26,6 +27,7 @@ public class PrimeCheck {
                 System.out.println(number + " is not prime");
             }
         }
+
     }
 }
 
